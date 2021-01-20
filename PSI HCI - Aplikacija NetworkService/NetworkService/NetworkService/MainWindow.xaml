@@ -3,9 +3,24 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:NetworkService"
+        xmlns:views="clr-namespace:NetworkService.Views"
+        xmlns:viewModel="clr-namespace:NetworkService.ViewModel"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" d:DesignHeight="960" d:DesignWidth="640">
+
+    <Window.Resources>
+        <DataTemplate DataType="{x:Type viewModel:ViewModel1}">
+            <views:View1></views:View1>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewModel:ViewModel2}">
+            <views:View2></views:View2>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewModel:ViewModel3}">
+            <views:View3></views:View3>
+        </DataTemplate>
+    </Window.Resources>
+
+
     <Grid>
         
     </Grid>

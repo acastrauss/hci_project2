@@ -15,6 +15,7 @@ namespace NetworkService.ViewModel
                                 // ######### ZAMENITI stvarnim brojem elemenata
                                 //           zavisno od broja entiteta u listi
 
+
         public MainWindowViewModel()
         {
             createListener(); //Povezivanje sa serverskom aplikacijom

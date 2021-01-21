@@ -4,9 +4,80 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:NetworkService.Views"
+             xmlns:ViewModel="clr-namespace:NetworkService.ViewModel"
+             xmlns:data="clr-namespace:NetworkService.Model"      
              mc:Ignorable="d" 
              d:DesignHeight="960" d:DesignWidth="640">
-    <Grid>
-            
+    <Grid Height="755" Width="640">
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#15e6ed" Offset="0"/>
+                <GradientStop Color="#15e6ed" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <StackPanel Orientation="Vertical" Margin="-10,0,10,0" >
+            <Separator Height="20"/>
+            <DataGrid AutoGenerateColumns="False"  ItemsSource="{Binding Parkinzi}"  SelectedItem="{Binding TrenutniParking}" CanUserAddRows="False" Height="200" Margin="40,0">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Id" Binding="{Binding Id}" Width="*" IsReadOnly="True" />
+                    <DataGridTextColumn Header="Ime" Binding="{Binding Naziv}" Width="*" IsReadOnly="True" />
+                    <DataGridTextColumn Header="Tip Parkinga" Binding="{Binding TipParkinga.Ime}" Width="*" IsReadOnly="True" />
+                    <DataGridTemplateColumn  Header="Slika parkinga"  IsReadOnly="True" Width="*">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Image Source="{Binding TipParkinga.Slika}" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTextColumn Header="Value" Binding="{Binding Val, UpdateSourceTrigger=PropertyChanged}" Width="*" />
+                </DataGrid.Columns>
+            </DataGrid>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Height="55" Margin="10,40,40,0" Width="590">
+                <Separator   Width="31"/>
+                <ComboBox Height="40" Margin="0,8,0,0" VerticalAlignment="Top"  ItemsSource="{Binding Tipovi_parkinga}" SelectedItem="{Binding Izabrani_tip}"  Width="142"/>
+                <Separator   Width="41"/>
+
+                <StackPanel Orientation="Vertical"  VerticalAlignment="Center"/>
+                <StackPanel Orientation="Vertical"/>
+
+                <StackPanel Orientation="Vertical"  VerticalAlignment="Center">
+                    <RadioButton x:Name="rbLessThan" Height="20"  VerticalContentAlignment="Center" Command="{Binding TipCommand,UpdateSourceTrigger=PropertyChanged}" />
+                    <RadioButton x:Name="rbGreatThan" Height="20"  HorizontalContentAlignment="Center" Command="{Binding ImeCommand,UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center" />
+                </StackPanel>
+                <StackPanel Orientation="Vertical"  VerticalAlignment="Center">
+
+                    <Label Content="TIP" Height="20" FontSize="10" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
+                    <Label Content="IME" Height="21" FontSize="10"  FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                </StackPanel>
+
+                <TextBox x:Name="tbReadID" Text="{Binding str_search,Mode=OneWayToSource,UpdateSourceTrigger=PropertyChanged}" Width="50" Height="40" Margin="0,8,0,7" />
+                <Separator   Width="18"/>
+
+                <Button x:Name="btnFilter" Height="40"  Content="Filtriraj" FontSize="20" Width="110" Margin="0,8,0,7" Command="{Binding SearchCommand}" />
+                <Separator  Width="42"/>
+                <Button Content="Cancel Search" Height="40" FontSize="20" Width="124" Margin="0,8,0,7" Command="{Binding CancelCommand}"/>
+            </StackPanel>
+            <Separator Height="16"/>
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" Margin="40,0,360,0" >
+                <StackPanel Orientation="Vertical">
+                    <TextBlock Text="ID" FontSize="20" Width="98" Height="25" TextAlignment="Center" />
+                    <TextBlock Text="Ime" FontSize="20" Width="99" Height="25" TextAlignment="Center"  />
+                </StackPanel>
+                <StackPanel Orientation="Vertical">
+                    <TextBox Text="{Binding Izabrani_id, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="120" Height="25" ToolTip="ID must be unique"/>
+                    <TextBox Text="{Binding Izabrano_ime, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="120" Height="25"/>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin="449,338,41,255" Height="107">
+            <Button x:Name="btnAdd" Content="Add" Width="80" Height="37.5" Command="{Binding AddCommand}"  Margin="36,0,34,0"  />
+            <Button x:Name="btnDelete" Content="Delete" Width="80" Height="37.5" Margin="36,0,34,0" Command="{Binding DeleteCommand}" />
+        </StackPanel>
+        <Image x:Name="imgImgSrc" Margin="80,440,80,30" Source="{Binding Path_to_pic, UpdateSourceTrigger=PropertyChanged}" Height="230" Width="480"/>
+
+        <TextBox x:Name="Obabir_Slike" Text="Odaberi sliku! " Margin="273,339,217,386" Height="30" Width="150" IsReadOnly="True" />
+        <ComboBox x:Name="cbType2" ItemsSource="{Binding Slike_parkinga, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding Path_to_pic}"  Width="150" Text="Select option" Height="25" Margin="273,394,217,335"/>
+
     </Grid>
+
 </UserControl>

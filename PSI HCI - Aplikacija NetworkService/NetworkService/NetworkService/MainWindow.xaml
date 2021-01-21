@@ -5,8 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:views="clr-namespace:NetworkService.Views"
         xmlns:viewModel="clr-namespace:NetworkService.ViewModel"
+        xmlns:local="clr-namespace:NetworkService"
         mc:Ignorable="d"
-        Title="MainWindow" d:DesignHeight="960" d:DesignWidth="640">
+        Title="MainWindow" Height="960" Width="640">
+    
+    <Window.DataContext>
+        <viewModel:MainWindowViewModel/>
+    </Window.DataContext>
+    <Window.InputBindings>
+        <KeyBinding Key="F1" Command="{Binding NavCommand}" CommandParameter="Network Data"/>
+        <KeyBinding Key="F2" Command="{Binding NavCommand}" CommandParameter="Report View"/>
+        <KeyBinding Key="F3" Command="{Binding NavCommand}" CommandParameter="Network View"/>
+        <KeyBinding Key="F4" Command="{Binding NavCommand}" CommandParameter="Data Chart"/>
+    </Window.InputBindings>
 
     <Window.Resources>
         <DataTemplate DataType="{x:Type viewModel:ViewModel1}">
@@ -22,6 +33,43 @@
 
 
     <Grid>
-        
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#15e6ed" Offset="0"/>
+                <GradientStop Color="#15e6ed" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <DockPanel Grid.Row="0" Margin="5">
+            <Menu DockPanel.Dock="Top" Background="#15e6ed">
+
+                <MenuItem Header="Network Data" Command="{Binding NavCommand}" 
+                          CommandParameter="Network Data" Background="#cacecf" Height="30"/>
+                <MenuItem Header="Data Chart" Command="{Binding NavCommand}"
+                          CommandParameter="Data Chart" Background="#cacecf"/>
+                <MenuItem Header="Network View" Command="{Binding NavCommand}"
+                          CommandParameter="Network Display" Background="#cacecf"/>
+            </Menu>
+        </DockPanel>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="275*"/>
+                <ColumnDefinition Width="25*"/>
+                <ColumnDefinition Width="332*"/>
+            </Grid.ColumnDefinitions>
+            <ContentControl Content="{Binding CurrentViewModel}" Grid.ColumnSpan="3" Margin="0,20,0,140"/>
+        </Grid>
+
+        <Border BorderBrush="Black" BorderThickness="2" Height="141" Margin="5,778,8,0" VerticalAlignment="Top"/>
+        <Button x:Name="Home" Content="" Height="100" Margin="85,0,0,21" VerticalAlignment="Bottom"  Command="{Binding NavCommand}" CommandParameter="Network Data" HorizontalAlignment="Left" Width="150" BorderBrush="{x:Null}">
+            <Button.Background>
+                <ImageBrush ImageSource="Pictures/hoem.png"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="Back" Content="" Height="100" Margin="0,0,85,21" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="150" BorderBrush="{x:Null}">
+            <Button.Background>
+                <ImageBrush ImageSource="Pictures/undo.png"/>
+            </Button.Background>
+        </Button>
     </Grid>
+
 </Window>

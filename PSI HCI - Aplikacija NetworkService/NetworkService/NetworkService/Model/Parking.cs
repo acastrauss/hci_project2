@@ -26,6 +26,7 @@ namespace NetworkService.Model
             this.id = id;
             this.naziv = naziv;
             this.tipParkinga = tipParkinga;
+            val = -1;
         }
 
         public int Id
@@ -104,6 +105,18 @@ namespace NetworkService.Model
         {   // da li je prazan parking
             
             return id == -1 || string.IsNullOrEmpty(naziv) || tipParkinga.is_empty() || val == -1; 
+        }
+
+        public override bool Equals(object obj)
+        {
+            Parking temp = (Parking)obj;
+
+            return temp.Id == Id && Naziv == temp.Naziv && TipParkinga == temp.TipParkinga && Val == temp.Val;
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
         }
     }
 }

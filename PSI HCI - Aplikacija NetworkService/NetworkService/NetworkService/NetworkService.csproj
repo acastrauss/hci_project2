@@ -62,7 +62,6 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="BindableBase.cs" />
-    <Compile Include="Commands\AddParking.cs" />
     <Compile Include="Model\Parking.cs" />
     <Compile Include="Model\TipParkinga.cs" />
     <Compile Include="MyICommand.cs" />
@@ -133,6 +132,17 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Pictures\otvoreni_beznaplate.jpg" />
+    <Resource Include="Pictures\otvoreni_sanaplatom.jpg" />
+    <Resource Include="Pictures\zatvoreni_polu.jpg" />
+    <Resource Include="Pictures\zatvoreni_zgrada.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Pictures\undo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Pictures\hoem.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

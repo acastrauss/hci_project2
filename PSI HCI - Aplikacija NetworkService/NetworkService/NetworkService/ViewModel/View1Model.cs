@@ -50,6 +50,7 @@ namespace NetworkService.ViewModel
             TipCommand = new MyICommand(OnTip);
             ImeCommand = new MyICommand(OnIme);
             CancelCommand = new MyICommand(OnCancel, CanCancel);
+            
         }
 
         public Parking TrenutniParking 

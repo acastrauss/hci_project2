@@ -65,7 +65,7 @@
                 <ImageBrush ImageSource="Pictures/hoem.png"/>
             </Button.Background>
         </Button>
-        <Button x:Name="Back" Content="" Height="100" Margin="0,0,85,21" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="150" BorderBrush="{x:Null}">
+        <Button x:Name="Back" Content="" Height="100" Margin="0,0,85,21" VerticalAlignment="Bottom" Command="{Binding UndoCommand}" HorizontalAlignment="Right" Width="150" BorderBrush="{x:Null}">
             <Button.Background>
                 <ImageBrush ImageSource="Pictures/undo.png"/>
             </Button.Background>

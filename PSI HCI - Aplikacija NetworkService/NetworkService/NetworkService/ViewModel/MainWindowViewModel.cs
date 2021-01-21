@@ -17,10 +17,14 @@ namespace NetworkService.ViewModel
     public class MainWindowViewModel : BindableBase
     {
         public MyICommand<string> NavCommand { get; private set; }
+        public MyICommand UndoCommand { get; private set; }
+        
         private View1Model podaci = new View1Model();
         private View2Model pregled = new View2Model();
         private View3Model grafik = new View3Model();
+        
         private BindableBase currentViewModel;
+        private BindableBase previous;
 
         private const int count = 15; // Inicijalna vrednost broja objekata u sistemu
                                       // ######### ZAMENITI stvarnim brojem elemenata
@@ -30,9 +34,11 @@ namespace NetworkService.ViewModel
 
         public MainWindowViewModel()
         {
-            createListener();
+            //createListener();
             NavCommand = new MyICommand<String>(OnNav);
+            UndoCommand = new MyICommand(OnUndo);
             CurrentViewModel = podaci;
+            Previous = CurrentViewModel;
         }
         public BindableBase CurrentViewModel
         {
@@ -42,12 +48,24 @@ namespace NetworkService.ViewModel
                 SetProperty(ref currentViewModel, value);
             }
         }
+
+        public BindableBase Previous 
+        {
+            get { return previous; }
+            set
+            {
+                SetProperty(ref previous, value);
+            } 
+        }
+
         private void OnNav(string destination)
         {
+            Previous = currentViewModel;
+
             switch (destination)
             {
                 case "Podaci Parkinga":
-                    CurrentViewModel = podaci;
+                    CurrentViewModel = podaci;                    
                     break;
                 case "Pregled Parkinga":
                     CurrentViewModel = pregled;
@@ -55,10 +73,14 @@ namespace NetworkService.ViewModel
                 case "Grafik":
                     CurrentViewModel = grafik;
                     break;
-
+                
             }
         }
 
+        private void OnUndo()
+        {
+            CurrentViewModel = Previous;    
+        }
         private void createListener()
         {
             var tcp = new TcpListener(IPAddress.Any, 25565);

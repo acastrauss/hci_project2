@@ -12,7 +12,7 @@
              
              mc:Ignorable="d" 
              d:DesignHeight="960" d:DesignWidth="640">
-    <Grid Height="755" Width="640">
+    <Grid Height="740" Width="640">
         <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                 <GradientStop Color="#15e6ed" Offset="0"/>
@@ -76,8 +76,8 @@
             <Button x:Name="btnDelete" Content="Delete" Width="80" Height="37.5" Margin="36,40,34,40" Command="{Binding DeleteCommand}" />
         </StackPanel>
         <Image x:Name="imgImgSrc" Margin="297,479,57,54" Source="{Binding Path_to_pic, UpdateSourceTrigger=PropertyChanged}"/>
-        <ComboBox x:Name="cbType2" ItemsSource="{Binding Tipovi_parkinga, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding Izabrani_tip, UpdateSourceTrigger=PropertyChanged}"  Width="150" Text="Select option" Height="25" Margin="38,474,452,256"/>
-        <Label Content="Izbor tipa parkinga" FontSize="20" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Margin="38,434,410,281"/>
+        <ComboBox x:Name="cbType2" ItemsSource="{Binding Tipovi_parkinga, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding Izabrani_tip, UpdateSourceTrigger=PropertyChanged}"  Width="150" Text="Select option" Margin="38,489,452,218"/>
+        <Label Content="Izbor tipa parkinga" FontSize="20" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Margin="38,434,410,256"/>
     </Grid>
 
 </UserControl>

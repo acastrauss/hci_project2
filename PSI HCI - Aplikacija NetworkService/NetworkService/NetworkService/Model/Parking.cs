@@ -18,7 +18,7 @@ namespace NetworkService.Model
             id = -1;
             naziv = string.Empty;
             tipParkinga = new TipParkinga();
-            val = -1;
+            val = 0.5;
         }
 
         public Parking(int id, string naziv, TipParkinga tipParkinga)
@@ -26,7 +26,15 @@ namespace NetworkService.Model
             this.id = id;
             this.naziv = naziv;
             this.tipParkinga = tipParkinga;
-            val = -1;
+            val = 0.5; // default vrednost
+        }
+
+        public Parking(Parking pc)
+        {
+            Id = pc.Id;
+            Naziv = pc.Naziv;
+            TipParkinga = pc.TipParkinga;
+            Val = pc.Val;
         }
 
         public int Id
@@ -109,6 +117,11 @@ namespace NetworkService.Model
 
         public override bool Equals(object obj)
         {
+            if ((obj == null) || !this.GetType().Equals(obj.GetType()))
+            {
+                return false;
+            }
+
             Parking temp = (Parking)obj;
 
             return temp.Id == Id && Naziv == temp.Naziv && TipParkinga == temp.TipParkinga && Val == temp.Val;

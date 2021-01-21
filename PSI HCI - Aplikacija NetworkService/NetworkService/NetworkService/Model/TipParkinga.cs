@@ -24,11 +24,22 @@ namespace NetworkService.Model
             this.slika = slika;
         }
 
+        public TipParkinga(TipParkinga tp)
+        {
+            Ime = tp.ime;
+            Slika = tp.slika;
+        }
         public string Ime { get => ime; set => ime = value; }
+
         public string Slika { get => slika; set => slika = value; }
 
         public override bool Equals(object obj)
         {
+            if ((obj == null) || !this.GetType().Equals(obj.GetType()))
+            {
+                return false;
+            }
+
             TipParkinga tp = (TipParkinga)obj;
             return tp.ime == this.ime && tp.slika == this.slika;
         }

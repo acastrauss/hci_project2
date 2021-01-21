@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GalaSoft.MvvmLight.Command;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -46,6 +47,7 @@ namespace NetworkService
 
         public event EventHandler CanExecuteChanged = delegate { };
 
+        
         void ICommand.Execute(object parameter)
         {
             if (_TargetExecuteMethod != null)
@@ -53,60 +55,24 @@ namespace NetworkService
                 _TargetExecuteMethod();
             }
         }
-
+        
     }
 
-    public class MyICommand<T> : ICommand
+    public class MyICommand<T> : RelayCommand<T>
     {
+        #region Constructors
+        public MyICommand(Action<T> execute, bool keepTargetAlive = false) : base(execute, keepTargetAlive) { }
 
-        readonly Action<T> _TargetExecuteMethod;
-        readonly Func<T, bool> _TargetCanExecuteMethod;
+        public MyICommand(Action<T> execute, Func<T, bool> canExecute, bool keepTargetAlive = false) : base(execute, canExecute, keepTargetAlive) { }
+        #endregion
 
-        public MyICommand(Action<T> executeMethod)
+        #region Override Methods
+        public override void Execute(object parameter)
         {
-            _TargetExecuteMethod = executeMethod;
+            base.Execute(parameter);
         }
-
-        public MyICommand(Action<T> executeMethod, Func<T, bool> canExecuteMethod)
-        {
-            _TargetExecuteMethod = executeMethod;
-            _TargetCanExecuteMethod = canExecuteMethod;
-        }
-
-        public void RaiseCanExecuteChanged()
-        {
-            CanExecuteChanged(this, EventArgs.Empty);
-        }
-
-        #region ICommand Members
-
-        bool ICommand.CanExecute(object parameter)
-        {
-
-            if (_TargetCanExecuteMethod != null)
-            {
-                T tparm = (T)parameter;
-                return _TargetCanExecuteMethod(tparm);
-            }
-
-            if (_TargetExecuteMethod != null)
-            {
-                return true;
-            }
-
-            return false;
-        }
-
-        public event EventHandler CanExecuteChanged = delegate { };
-
-        void ICommand.Execute(object parameter)
-        {
-            if (_TargetExecuteMethod != null)
-            {
-                _TargetExecuteMethod((T)parameter);
-            }
-        }
-
         #endregion
     }
+
+
 }

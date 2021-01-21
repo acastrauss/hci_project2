@@ -9,6 +9,7 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows;
 using static NetworkService.MyICommand;
 
 namespace NetworkService.ViewModel
@@ -16,9 +17,9 @@ namespace NetworkService.ViewModel
     public class MainWindowViewModel : BindableBase
     {
         public MyICommand<string> NavCommand { get; private set; }
-        private ViewModel1 networkDisplayModel = new ViewModel1();
-        private ViewModel2 measurementGraphModel = new ViewModel2();
-        private ViewModel3 networkEntitiesModel = new ViewModel3();
+        private View1Model podaci = new View1Model();
+        private View2Model pregled = new View2Model();
+        private View3Model grafik = new View3Model();
         private BindableBase currentViewModel;
 
         private const int count = 15; // Inicijalna vrednost broja objekata u sistemu
@@ -29,9 +30,9 @@ namespace NetworkService.ViewModel
 
         public MainWindowViewModel()
         {
-            //createListener();
+            createListener();
             NavCommand = new MyICommand<String>(OnNav);
-            CurrentViewModel = networkDisplayModel;
+            CurrentViewModel = podaci;
         }
         public BindableBase CurrentViewModel
         {
@@ -45,14 +46,14 @@ namespace NetworkService.ViewModel
         {
             switch (destination)
             {
-                case "Network Data":
-                    CurrentViewModel = networkDisplayModel;
+                case "Podaci Parkinga":
+                    CurrentViewModel = podaci;
                     break;
-                case "Network View":
-                    CurrentViewModel = networkDisplayModel;
+                case "Pregled Parkinga":
+                    CurrentViewModel = pregled;
                     break;
-                case "Data Chart":
-                    CurrentViewModel = measurementGraphModel;
+                case "Grafik":
+                    CurrentViewModel = grafik;
                     break;
 
             }
@@ -60,7 +61,7 @@ namespace NetworkService.ViewModel
 
         private void createListener()
         {
-            var tcp = new TcpListener(IPAddress.Any, 25591);
+            var tcp = new TcpListener(IPAddress.Any, 25565);
             tcp.Start();
 
             var listeningThread = new Thread(() =>
@@ -86,7 +87,7 @@ namespace NetworkService.ViewModel
                              * duzinu liste koja sadrzi sve objekte pod monitoringom, odnosno
                              * njihov ukupan broj (NE BROJATI OD NULE, VEC POSLATI UKUPAN BROJ)
                              * */
-                            Byte[] data = System.Text.Encoding.ASCII.GetBytes(count.ToString());
+                            Byte[] data = System.Text.Encoding.ASCII.GetBytes(View1Model.Parkinzi.Count.ToString());
                             stream.Write(data, 0, data.Length);
                         }
                         else
@@ -97,6 +98,13 @@ namespace NetworkService.ViewModel
                             //################ IMPLEMENTACIJA ####################
                             // Obraditi poruku kako bi se dobile informacije o izmeni
                             // Azuriranje potrebnih stvari u aplikaciji
+                            /*
+                            string[] parts = incomming.Split('_', ':'); //splitujemo string
+                            Data.PowerConsumptions[int.Parse(parts[1])].Value = Math.Round(double.Parse(parts[2]), 2); // dodamo vrednost u bazu
+                            File.AppendAllText("Log.txt", $"PowerId- {int.Parse(parts[1])}\t|PowerConsumption- {Math.Round(double.Parse(parts[2]), 2)}\t|Time- {DateTime.Now}" + Environment.NewLine); //U Log.txt
+                            Tab3ViewModel.ValueChanged.Execute($"{int.Parse(parts[1])}_{Math.Round(double.Parse(parts[2]), 2)}");
+                            */
+
                             string[] msg = incomming.Split(':');
                             string[] ime = msg[0].Split('_');
                             int id = Int32.Parse(ime[1]);
@@ -109,8 +117,11 @@ namespace NetworkService.ViewModel
                             {
                                 sw.WriteLine(send_msg);
                             }
-                            
+
+                            podaci.change_value_by_id(id, v);
+                            OnPropertyChanged("Parkizni");
                         }
+                        
                     }, null);
                 }
             });

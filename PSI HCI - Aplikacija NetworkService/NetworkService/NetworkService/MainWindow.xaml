@@ -8,29 +8,29 @@
         xmlns:local="clr-namespace:NetworkService"
         mc:Ignorable="d"
         Title="MainWindow" Height="960" Width="640">
-    
-    <Window.DataContext>
-        <viewModel:MainWindowViewModel/>
-    </Window.DataContext>
-    <Window.InputBindings>
-        <KeyBinding Key="F1" Command="{Binding NavCommand}" CommandParameter="Network Data"/>
-        <KeyBinding Key="F2" Command="{Binding NavCommand}" CommandParameter="Report View"/>
-        <KeyBinding Key="F3" Command="{Binding NavCommand}" CommandParameter="Network View"/>
-        <KeyBinding Key="F4" Command="{Binding NavCommand}" CommandParameter="Data Chart"/>
-    </Window.InputBindings>
-
     <Window.Resources>
-        <DataTemplate DataType="{x:Type viewModel:ViewModel1}">
+        <DataTemplate DataType="{x:Type viewModel:View1Model}">
             <views:View1></views:View1>
         </DataTemplate>
-        <DataTemplate DataType="{x:Type viewModel:ViewModel2}">
+        <DataTemplate DataType="{x:Type viewModel:View2Model}">
             <views:View2></views:View2>
         </DataTemplate>
-        <DataTemplate DataType="{x:Type viewModel:ViewModel3}">
+        <DataTemplate DataType="{x:Type viewModel:View3Model}">
             <views:View3></views:View3>
         </DataTemplate>
     </Window.Resources>
 
+    <Window.DataContext>
+        <viewModel:MainWindowViewModel/>
+    </Window.DataContext>
+    <Window.InputBindings>
+        <KeyBinding Key="F1" Command="{Binding NavCommand}" CommandParameter="Podaci Parkinga"/>
+        <KeyBinding Key="F2" Command="{Binding NavCommand}" CommandParameter="Report View"/>
+        <KeyBinding Key="F3" Command="{Binding NavCommand}" CommandParameter="Pregled Parkinga"/>
+        <KeyBinding Key="F4" Command="{Binding NavCommand}" CommandParameter="Grafik"/>
+    </Window.InputBindings>
+
+    
 
     <Grid>
         <Grid.Background>
@@ -42,12 +42,12 @@
         <DockPanel Grid.Row="0" Margin="5">
             <Menu DockPanel.Dock="Top" Background="#15e6ed">
 
-                <MenuItem Header="Network Data" Command="{Binding NavCommand}" 
-                          CommandParameter="Network Data" Background="#cacecf" Height="30"/>
-                <MenuItem Header="Data Chart" Command="{Binding NavCommand}"
-                          CommandParameter="Data Chart" Background="#cacecf"/>
-                <MenuItem Header="Network View" Command="{Binding NavCommand}"
-                          CommandParameter="Network Display" Background="#cacecf"/>
+                <MenuItem Header="Podaci Parkinga" Command="{Binding NavCommand}" 
+                          CommandParameter="Podaci Parkinga" Background="#cacecf" Height="30"/>
+                <MenuItem Header="Grafik" Command="{Binding NavCommand}"
+                          CommandParameter="Grafik" Background="#cacecf"/>
+                <MenuItem Header="Pregled Parkinga" Command="{Binding NavCommand}"
+                          CommandParameter="Pregled Parkinga" Background="#cacecf"/>
             </Menu>
         </DockPanel>
         <Grid Grid.Row="1">
@@ -60,7 +60,7 @@
         </Grid>
 
         <Border BorderBrush="Black" BorderThickness="2" Height="141" Margin="5,778,8,0" VerticalAlignment="Top"/>
-        <Button x:Name="Home" Content="" Height="100" Margin="85,0,0,21" VerticalAlignment="Bottom"  Command="{Binding NavCommand}" CommandParameter="Network Data" HorizontalAlignment="Left" Width="150" BorderBrush="{x:Null}">
+        <Button x:Name="Home" Content="" Height="100" Margin="85,0,0,21" VerticalAlignment="Bottom"  Command="{Binding NavCommand}" CommandParameter="Podaci Parkinga" HorizontalAlignment="Left" Width="150" BorderBrush="{x:Null}">
             <Button.Background>
                 <ImageBrush ImageSource="Pictures/hoem.png"/>
             </Button.Background>

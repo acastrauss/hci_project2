@@ -15,9 +15,9 @@
              d:DesignHeight="960" d:DesignWidth="640">
     <Grid>
         <Grid HorizontalAlignment="Left" VerticalAlignment="Top" Width="820" Height="50" >
-            <Label Content="Network View" FontSize="20" FontStyle="Oblique"  FontWeight="Bold" Width="600" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+            <Label Content="Pregled Parkinga" FontSize="20" FontStyle="Oblique"  FontWeight="Bold" Width="600" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
         </Grid>
-        <Grid x:Name="MainCanvas" Background="#A9BCF5" Width="460" Height="Auto" Margin="5,109,0,113" HorizontalAlignment="Left">
+        <Grid x:Name="MainCanvas" Background="#429bad" Width="460" Height="Auto" Margin="5,109,0,113" HorizontalAlignment="Left">
             <Grid.RowDefinitions>
                 <RowDefinition Height="5"/>
                 <RowDefinition Height="*"/>

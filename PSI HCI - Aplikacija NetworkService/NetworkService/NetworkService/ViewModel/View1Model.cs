@@ -27,6 +27,10 @@ namespace NetworkService.ViewModel
         public static ObservableCollection<Parking> ParkinziRezerva { get; set; } = new ObservableCollection<Parking>();
         private ObservableCollection<Parking> TrazeniParkinzi { get; set; } = new ObservableCollection<Parking>();
 
+        private bool CanValidateIme = false;
+        private bool CanValidateId = false;
+        private bool CanValidateStrSearch = false;
+
         public static List<string> Tipovi_parkinga { get; set; } = new List<string> { "Otvoreni sa naplatom", "Otvoreni bez naplate", "Poluzatvoreni", "Zatvoreni" };
         public static List<string> Slike_parkinga { get; set; } = new List<string> { "Pictures/otvoreni_sanaplatom.jpg", "Pictures/otvoreni_beznaplate.jpg", "Pictures/zatvoreni_polu.jpg", "Pictures/zatvoreni_zgrada.jpg" };
  
@@ -87,6 +91,7 @@ namespace NetworkService.ViewModel
                 str_search = value;
                 OnPropertyChanged("Str_search");
                 SearchCommand.RaiseCanExecuteChanged();
+                CanValidateStrSearch = true;
             } 
         }
         public string Izabrani_tip 
@@ -122,6 +127,7 @@ namespace NetworkService.ViewModel
                     izabrano_ime = value;
                     OnPropertyChanged("Izabrano_ime");
                     AddCommand.RaiseCanExecuteChanged();
+                    CanValidateIme = true;
                 }
             } 
         }
@@ -135,6 +141,7 @@ namespace NetworkService.ViewModel
                     izabrani_id = value;
                     OnPropertyChanged("Izabrani_id");
                     AddCommand.RaiseCanExecuteChanged();
+                    CanValidateId = true;
                 }
             }
         }
@@ -164,10 +171,9 @@ namespace NetworkService.ViewModel
                 Parkinzi.Add(novi);
                 View3Model.set_all_ids(Parkinzi);
             }
-            else
-            {
-                MessageBox.Show("Nije validan");
-            }
+
+            CanValidateId = false;
+            CanValidateIme = false;
         }
 
         private void OnDelete()
@@ -271,14 +277,81 @@ namespace NetworkService.ViewModel
             OnPropertyChanged("TrazeniParkinzi");
             OnPropertyChanged("Parkinzi");
             trazi_cancel = false;
+            CanValidateStrSearch = true;
             CancelCommand.RaiseCanExecuteChanged();
             SearchCommand.RaiseCanExecuteChanged();
             AddCommand.RaiseCanExecuteChanged();
         }
+        
+        public string Error { get { return null; } }
 
-        public string this[string columnName] => throw new NotImplementedException();
+        public string this[string columnName]
+        {
+            get
+            {
+                string result = null;
+                switch (columnName)
+                {
+                    case "Ime":
+                        if (CanValidateIme)
+                            result = this.ValidateAddIme();
+                        break;
+                    case "Id":
+                        if (CanValidateId)
+                            result = this.ValidateAddID();
+                        break;
 
-        public string Error => throw new NotImplementedException();
+                    case "Str_search":
+                        if (CanValidateStrSearch)
+                            result = this.ValidateSearchValue();
+                        break;
+                }
+
+                return result;
+            }
+        }
+
+        private string ValidateSearchValue()
+        {
+            string result = null;
+            double num = 0;
+
+            if (string.IsNullOrEmpty(Str_search) || string.IsNullOrWhiteSpace(Str_search))
+            {
+                result = "Morate uneti vrednost za pretragu!";
+            }
+            
+            return result;
+        }
+
+
+        private string ValidateAddIme()
+        {
+            string result = null;
+            MessageBox.Show(Izabrano_ime);
+            if (string.IsNullOrEmpty(Izabrano_ime) || string.IsNullOrWhiteSpace(Izabrano_ime))
+                result = "Ime ne moze biti prazno!";
+
+            return result;
+        }
+
+        private string ValidateAddID()
+        {
+            string result = null;
+
+            MessageBox.Show(izabrani_id.ToString());
+
+            if (Izabrani_id <= 0)
+                result = "ID mora biti pozitivan broj!";
+            else
+            {
+                if (Parkinzi.Any<Parking>(x => x.Id == Izabrani_id))
+                    result = "ID vec postoji!";
+
+            }
+            
+            return result;
+        }
 
     }
 }

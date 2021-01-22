@@ -18,7 +18,7 @@ C:\Users\acast\Desktop\treca_godina_prvi_semestar\hci\vezbe\projekat_dva\PSI HCI
 C:\Users\acast\Desktop\treca_godina_prvi_semestar\hci\vezbe\projekat_dva\PSI HCI - Aplikacija NetworkService\NetworkService\NetworkService\obj\Debug\Views\View1.g.cs
 C:\Users\acast\Desktop\treca_godina_prvi_semestar\hci\vezbe\projekat_dva\PSI HCI - Aplikacija NetworkService\NetworkService\NetworkService\obj\Debug\Views\View2.g.cs
 C:\Users\acast\Desktop\treca_godina_prvi_semestar\hci\vezbe\projekat_dva\PSI HCI - Aplikacija NetworkService\NetworkService\NetworkService\obj\Debug\Views\View3.g.cs
-C:\Users\acast\Desktop\treca_godina_prvi_semestar\hci\vezbe\projekat_dva\PSI HCI - Aplikacija NetworkService\NetworkService\NetworkService\obj\Debug\Views\View4.g.cs
+C:\Users\acast\Desktop\treca_godina_prvi_semestar\hci\vezbe\projekat_dva\PSI HCI - Aplikacija NetworkService\NetworkService\NetworkService\obj\Debug\VirtualKeyboard.g.cs
 C:\Users\acast\Desktop\treca_godina_prvi_semestar\hci\vezbe\projekat_dva\PSI HCI - Aplikacija NetworkService\NetworkService\NetworkService\obj\Debug\App.g.cs
 C:\Users\acast\Desktop\treca_godina_prvi_semestar\hci\vezbe\projekat_dva\PSI HCI - Aplikacija NetworkService\NetworkService\NetworkService\obj\Debug\GeneratedInternalTypeHelper.g.cs
 C:\Users\acast\Desktop\treca_godina_prvi_semestar\hci\vezbe\projekat_dva\PSI HCI - Aplikacija NetworkService\NetworkService\NetworkService\obj\Debug\NetworkService_MarkupCompile.cache
@@ -27,7 +27,7 @@ C:\Users\acast\Desktop\treca_godina_prvi_semestar\hci\vezbe\projekat_dva\PSI HCI
 C:\Users\acast\Desktop\treca_godina_prvi_semestar\hci\vezbe\projekat_dva\PSI HCI - Aplikacija NetworkService\NetworkService\NetworkService\obj\Debug\Views\View1.baml
 C:\Users\acast\Desktop\treca_godina_prvi_semestar\hci\vezbe\projekat_dva\PSI HCI - Aplikacija NetworkService\NetworkService\NetworkService\obj\Debug\Views\View2.baml
 C:\Users\acast\Desktop\treca_godina_prvi_semestar\hci\vezbe\projekat_dva\PSI HCI - Aplikacija NetworkService\NetworkService\NetworkService\obj\Debug\Views\View3.baml
-C:\Users\acast\Desktop\treca_godina_prvi_semestar\hci\vezbe\projekat_dva\PSI HCI - Aplikacija NetworkService\NetworkService\NetworkService\obj\Debug\Views\View4.baml
+C:\Users\acast\Desktop\treca_godina_prvi_semestar\hci\vezbe\projekat_dva\PSI HCI - Aplikacija NetworkService\NetworkService\NetworkService\obj\Debug\VirtualKeyboard.baml
 C:\Users\acast\Desktop\treca_godina_prvi_semestar\hci\vezbe\projekat_dva\PSI HCI - Aplikacija NetworkService\NetworkService\NetworkService\obj\Debug\NetworkService.g.resources
 C:\Users\acast\Desktop\treca_godina_prvi_semestar\hci\vezbe\projekat_dva\PSI HCI - Aplikacija NetworkService\NetworkService\NetworkService\obj\Debug\NetworkService.Properties.Resources.resources
 C:\Users\acast\Desktop\treca_godina_prvi_semestar\hci\vezbe\projekat_dva\PSI HCI - Aplikacija NetworkService\NetworkService\NetworkService\obj\Debug\NetworkService.csproj.GenerateResource.cache
@@ -35,4 +35,3 @@ C:\Users\acast\Desktop\treca_godina_prvi_semestar\hci\vezbe\projekat_dva\PSI HCI
 C:\Users\acast\Desktop\treca_godina_prvi_semestar\hci\vezbe\projekat_dva\PSI HCI - Aplikacija NetworkService\NetworkService\NetworkService\obj\Debug\NetworkService.csproj.CopyComplete
 C:\Users\acast\Desktop\treca_godina_prvi_semestar\hci\vezbe\projekat_dva\PSI HCI - Aplikacija NetworkService\NetworkService\NetworkService\obj\Debug\NetworkService.exe
 C:\Users\acast\Desktop\treca_godina_prvi_semestar\hci\vezbe\projekat_dva\PSI HCI - Aplikacija NetworkService\NetworkService\NetworkService\obj\Debug\NetworkService.pdb
-C:\Users\acast\Desktop\treca_godina_prvi_semestar\hci\vezbe\projekat_dva\PSI HCI - Aplikacija NetworkService\NetworkService\NetworkService\obj\Debug\NetworkService.csprojAssemblyReference.cache

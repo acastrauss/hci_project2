@@ -24,5 +24,31 @@ namespace NetworkService.Views
         {
             InitializeComponent();
         }
+
+
+        private void textBox1_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            TextBox textbox = sender as TextBox;
+            VirtualKeyboard keyboardWindow = new VirtualKeyboard(textbox, Window.GetWindow(this));
+            if (keyboardWindow.ShowDialog() == true)
+                textbox.Text = keyboardWindow.Result;
+        }
+        private void textBox2_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            TextBox textbox = sender as TextBox;
+            VirtualKeyboard keyboardWindow = new VirtualKeyboard(textbox, Window.GetWindow(this));
+            if (keyboardWindow.ShowDialog() == true)
+                textbox.Text = keyboardWindow.Result;
+        }
+        
+        private void tbReadID_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            TextBox textbox = sender as TextBox;
+            VirtualKeyboard keyboardWindow = new VirtualKeyboard(textbox, Window.GetWindow(this));
+            if (keyboardWindow.ShowDialog() == true)
+                textbox.Text = keyboardWindow.Result;
+        }
+
+
     }
 }

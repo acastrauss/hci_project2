@@ -35,12 +35,12 @@
     <Grid>
         <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                <GradientStop Color="#15e6ed" Offset="0"/>
-                <GradientStop Color="#15e6ed" Offset="1"/>
+                <GradientStop Color="#429bad" Offset="0"/>
+                <GradientStop Color="#429bad" Offset="1"/>
             </LinearGradientBrush>
         </Grid.Background>
         <DockPanel Grid.Row="0" Margin="5">
-            <Menu DockPanel.Dock="Top" Background="#15e6ed">
+            <Menu DockPanel.Dock="Top" Background="#429bad">
 
                 <MenuItem Header="Podaci Parkinga" Command="{Binding NavCommand}" 
                           CommandParameter="Podaci Parkinga" Background="#cacecf" Height="30"/>
@@ -59,7 +59,7 @@
             <ContentControl Content="{Binding CurrentViewModel}" Grid.ColumnSpan="3" Margin="0,20,0,140"/>
         </Grid>
 
-        <Border BorderBrush="Black" BorderThickness="2" Height="141" Margin="5,778,8,0" VerticalAlignment="Top"/>
+        <Border BorderBrush="Transparent" BorderThickness="2" Height="141" Margin="5,778,8,0" VerticalAlignment="Top"/>
         <Button x:Name="Home" Content="" Height="100" Margin="85,0,0,21" VerticalAlignment="Bottom"  Command="{Binding NavCommand}" CommandParameter="Podaci Parkinga" HorizontalAlignment="Left" Width="150" BorderBrush="{x:Null}">
             <Button.Background>
                 <ImageBrush ImageSource="Pictures/hoem.png"/>

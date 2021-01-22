@@ -164,6 +164,11 @@ namespace NetworkService.ViewModel
         {
             Parking novi = new Parking(Izabrani_id, Izabrano_ime, new TipParkinga(Izabrani_tip, Path_to_pic));
             
+            if(Parkinzi.Any<Parking>(x => x.Id == Izabrani_id))
+            {
+                MessageBox.Show("ID vec postoji!");
+                return;
+            }
 
             novi.Validate();
             if (novi.IsValid)
@@ -171,6 +176,7 @@ namespace NetworkService.ViewModel
                 Parkinzi.Add(novi);
                 View3Model.set_all_ids(Parkinzi);
             }
+
 
             CanValidateId = false;
             CanValidateIme = false;

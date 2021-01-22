@@ -61,9 +61,9 @@
                 <TextBox PreviewMouseDown="tbReadID_PreviewMouseDown" x:Name="tbReadID" Text="{Binding Str_search,Mode=OneWayToSource,UpdateSourceTrigger=PropertyChanged}" Width="212" Height="40" Margin="0,8,0,7" Style="{StaticResource textboxstyle}"  />
                 <Separator Width="18" Background="Transparent"/>
 
-                <Button x:Name="btnPretraga" Height="40"  Content="Trazi" FontSize="20" Width="108" Margin="0,8,0,7" Command="{Binding SearchCommand}" />
+                <Button x:Name="btnPretraga" Height="40"  Content="Tra&#382;i" FontSize="20" Width="108" Margin="0,8,0,7" Command="{Binding SearchCommand}" />
                 <Separator  Width="23" Background="Transparent"/>
-                <Button Content="Iskljuci pretragu" Height="40" FontSize="20" Width="143" Margin="0,8,0,7" Command="{Binding CancelCommand}" />
+                <Button Content="Isklju&#269;i pretragu" Height="40" FontSize="20" Width="143" Margin="0,8,0,7" Command="{Binding CancelCommand}" />
             </StackPanel>
             <Separator Height="20" Foreground="Transparent" Background="Transparent"/>
             <DataGrid AutoGenerateColumns="False"  ItemsSource="{Binding Parkinzi, UpdateSourceTrigger=PropertyChanged}"  SelectedItem="{Binding TrenutniParking}" CanUserAddRows="False" Height="200" Margin="40,0" >
@@ -78,7 +78,7 @@
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
-                    <DataGridTextColumn Header="Value" Binding="{Binding Val, UpdateSourceTrigger=PropertyChanged}" Width="*" />
+                    <DataGridTextColumn Header="Vrednost" Binding="{Binding Val, UpdateSourceTrigger=PropertyChanged}" Width="*" />
                 </DataGrid.Columns>
             </DataGrid>
             <Separator Height="16" Background="Transparent"/>
@@ -96,8 +96,8 @@
             </StackPanel>
         </StackPanel>
         <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="297,356,57,281" Height="118">
-            <Button x:Name="btnAdd" Content="Add" Width="80" Height="37.5" Command="{Binding AddCommand}"  Margin="36,0,34,0"  />
-            <Button x:Name="btnDelete" Content="Delete" Width="80" Height="37.5" Margin="36,40,34,40" Command="{Binding DeleteCommand}"  />
+            <Button x:Name="btnAdd" Content="Dodaj" Width="80" Height="37.5" Command="{Binding AddCommand}"  Margin="36,0,34,0"  />
+            <Button x:Name="btnDelete" Content="Izbri&#353;i" Width="80" Height="37.5" Margin="36,40,34,40" Command="{Binding DeleteCommand}"  />
         </StackPanel>
         <Image x:Name="imgImgSrc" Margin="297,479,57,54" Source="{Binding Path_to_pic, UpdateSourceTrigger=PropertyChanged}"/>
         <ComboBox x:Name="cbType2" ItemsSource="{Binding Tipovi_parkinga, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding Izabrani_tip, UpdateSourceTrigger=PropertyChanged}"  Width="150" Text="Select option" Margin="38,489,452,218"/>

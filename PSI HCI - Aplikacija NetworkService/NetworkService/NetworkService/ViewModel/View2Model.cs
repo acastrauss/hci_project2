@@ -22,9 +22,7 @@ namespace NetworkService.ViewModel
 
         private ListView lv;
         public BindingList<Parking> Items { get; set; }
-        //komande 
-
-        static List<Parking> list_park = new List<Parking>(View1Model.Parkinzi);
+        
 
         public MyICommand<ListView> MLBUCommand { get; set; }
         public MyICommand<Parking> SCCommand { get; set; }
@@ -34,11 +32,9 @@ namespace NetworkService.ViewModel
         public MyICommand<Canvas> DLCommand { get; set; }//drag over leavew
         public MyICommand<Canvas> LCommand { get; set; }//on load
         public MyICommand<ListView> LLWCommand { get; set; }
-        //public static MyICommand<object> BaseRemove { get; set; }
-
+        
         public List<Canvas> CanvasList { get; set; } = new List<Canvas>();
 
-        //obj koji su dodati u canvas
         public static Dictionary<string, Parking> CanvasObj { get; set; } = new Dictionary<string, Parking>();
         public int SelectedIndex
         {
@@ -50,18 +46,17 @@ namespace NetworkService.ViewModel
 
             }
         }
-        //napraviti komande  
-
+        
         public View2Model()
         {
             Items = new BindingList<Parking>();
 
-            foreach (Parking re in View1Model.Parkinzi)
+            foreach (Parking p in View1Model.Parkinzi)
             {
                 exists = false;
-                foreach (Parking ReCn in CanvasObj.Values)
+                foreach (Parking p2 in CanvasObj.Values)
                 {
-                    if (re.Id == ReCn.Id)
+                    if (p.Id == p2.Id)
                     {
                         exists = true;
                         break;
@@ -69,9 +64,9 @@ namespace NetworkService.ViewModel
 
                 }
                 if (exists == false)
-                    Items.Add(new Parking(re));
+                    Items.Add(new Parking(p));
             }
-            //komande 
+            
             MLBUCommand = new MyICommand<ListView>(OnMLBU);
             SCCommand = new MyICommand<Parking>(SelectionChange);
             DCommand = new MyICommand<Canvas>(OnDrop);
@@ -80,44 +75,23 @@ namespace NetworkService.ViewModel
             DLCommand = new MyICommand<Canvas>(OnDragLeave);
             LCommand = new MyICommand<Canvas>(OnLoad);
             LLWCommand = new MyICommand<ListView>(OnLLW);
-            //BaseRemove = new MyICommand<object>(OnBaseRemove);
         }
-        /*
-        public void OnBaseRemove(object obj)
-        {
-            //Items.Remove((Parking)obj);
-
-            // nadji ga u canvasu 
-            //FreeCommand.Execute(obj);
-
-            list_park = new BindingList<Parking>(View1Model.Parkinzi).ToList();
-
-            List<Parking> curr = new List<Parking>(Items);
-            Items = new BindingList<Parking>();
-            foreach (Parking item in list_park)
-            {
-                if (curr.Contains(item))
-                    Items.Add(item);
-            }
-        }
-        */
+        
         public string this[string columnName] => throw new NotImplementedException();
 
         public string Error => throw new NotImplementedException();
 
         public void OnLLW(ListView listview)
         {
-            //lv dobija vrednost ListView-a gde su obj
             lv = listview;
         }
         public void OnLoad(Canvas c)
         {
             if (CanvasObj.ContainsKey(c.Name))
             {
-                BitmapImage logo = new BitmapImage();//za jednostavniji prikaz slike
-                logo.BeginInit();//signal za pocetak inicijalizacije
+                BitmapImage logo = new BitmapImage();
+                logo.BeginInit();
                 string temp = CanvasObj[c.Name].TipParkinga.Ime + ".png";
-                //MessageBox.Show(temp);
                 logo.UriSource = new Uri(draggItm.TipParkinga.Slika, UriKind.Absolute);
                 logo.EndInit();
                 c.Background = new ImageBrush(logo);
@@ -180,7 +154,6 @@ namespace NetworkService.ViewModel
             {
                 if (c.Resources["taken"] != null)
                 {
-                    //ako je
                     c.Background = Brushes.White;
                     foreach (Parking r in View1Model.Parkinzi)
                     {
@@ -209,7 +182,6 @@ namespace NetworkService.ViewModel
                     logo.BeginInit();
                     
                     string temp = draggItm.TipParkinga.Ime + ".png";
-                    //MessageBox.Show(draggItm.TipParkinga.Slika);
                     logo.UriSource = new Uri(draggItm.TipParkinga.Slika, UriKind.Absolute);
 
                     logo.EndInit();
@@ -224,15 +196,15 @@ namespace NetworkService.ViewModel
             }
         }
         public void OnMLBU(ListView lw)
-        {//podizanje klika, sve stavi na null/false ->ponisti sve
+        {   
             draggItm = null;
             lw.SelectedItem = null;
             dragging = false;
         }
         public void SelectionChange(Parking r)
         {
-            if (!dragging)
-            {//izvrsi promenu ako nema pomeranja
+            if (!dragging) 
+            { 
                 dragging = true;
                 draggItm = new Parking(r);
                 DragDrop.DoDragDrop(lv, draggItm, DragDropEffects.Move);

@@ -18,10 +18,10 @@
             <Setter Property="Margin" Value="4"/>
             <Setter Property="Button.Effect" Value="{StaticResource DropShadowEffect}"/>
             <Setter Property="FontSize" Value="22"/>
-            <Setter Property="Background" Value="WhiteSmoke"/>
+            <Setter Property="Background" Value="#94d5e0"/>
+            <Setter Property="Foreground" Value="Black"/>
             <Setter Property="RenderTransform">
                 <Setter.Value>
-                    <!-- Workaround for ATI video cards that don't render good with dropshadoweffect-->
                     <RotateTransform Angle="0.00000000001"/>
                 </Setter.Value>
             </Setter>
@@ -30,12 +30,11 @@
         <Style TargetType="ToggleButton">
             <Setter Property="ClickMode" Value="Press"/>
             <Setter Property="Margin" Value="4"/>
-            <Setter Property="Background" Value="WhiteSmoke"/>
+            <Setter Property="Background" Value="#94d5e0"/>
             <Setter Property="Button.Effect" Value="{StaticResource DropShadowEffect}"/>
             <Setter Property="FontSize" Value="22"/>
             <Setter Property="RenderTransform">
                 <Setter.Value>
-                    <!-- Workaround for ATI video cards that don't render good with dropshadoweffect-->
                     <RotateTransform Angle="0.00000000001"/>
                 </Setter.Value>
             </Setter>
@@ -47,21 +46,19 @@
             <Setter Property="VerticalContentAlignment" Value="Center"/>
             <Setter Property="RenderTransform">
                 <Setter.Value>
-                    <!-- Workaround for ATI video cards that don't render good with dropshadoweffect-->
                     <RotateTransform Angle="0.00000000001"/>
                 </Setter.Value>
             </Setter>
         </Style>
     </Window.Resources>
 
-    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#263a3d" >
+    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#323363" >
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <!--<Grid Grid.Row="1" x:Name="NumKeyboard" Background="{DynamicResource IPhoneSteelBackground}" Margin="0,0,0,0" Visibility="Collapsed" >-->
 
-        <Grid Grid.Row="1" VerticalAlignment="Stretch" x:Name="AlfaKeyboard" Background="#263a3d"  >
+        <Grid Grid.Row="1" VerticalAlignment="Stretch" x:Name="AlfaKeyboard" Background="#323363"  >
             <Grid.RowDefinitions>
                 <RowDefinition Height="0" />
                 <RowDefinition x:Name="AlfaKeys" Height="0"/>
@@ -101,33 +98,31 @@
             <Grid Grid.Row="3">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="0"/>
-                    <ColumnDefinition />
-                    <ColumnDefinition />
-                    <ColumnDefinition />
-                    <ColumnDefinition />
-                    <ColumnDefinition />
-                    <ColumnDefinition />
-                    <ColumnDefinition />
-                    <ColumnDefinition />
-                    <ColumnDefinition />
-                    <ColumnDefinition />
+                    <ColumnDefinition Width="5*" />
+                    <ColumnDefinition Width="7*"/>
+                    <ColumnDefinition Width="12*" />
+                    <ColumnDefinition Width="12*" />
+                    <ColumnDefinition Width="12*" />
+                    <ColumnDefinition Width="12*" />
+                    <ColumnDefinition Width="12*" />
+                    <ColumnDefinition Width="12*" />
+                    <ColumnDefinition Width="12*" />
+                    <ColumnDefinition Width="12*" />
+                    <ColumnDefinition Width="12*" />
                     <ColumnDefinition Width="0"/>
                     <ColumnDefinition Width="0"/>
-                    <ColumnDefinition />
+                    <ColumnDefinition Width="12*" />
                 </Grid.ColumnDefinitions>
-                <Button Grid.Column="1" CommandParameter="Q" Content="Q"/>
-                <Button Grid.Column="2" CommandParameter="W" Content="W"/>
-                <Button Grid.Column="3" CommandParameter="E" Content="E"/>
-                <Button Grid.Column="4" CommandParameter="R" Content="R"/>
-                <Button Grid.Column="5" CommandParameter="T" Content="T"/>
-                <Button Grid.Column="6" CommandParameter="Y" Content="Y"/>
-                <Button Grid.Column="7" CommandParameter="U" Content="U"/>
-                <Button Grid.Column="8" CommandParameter="I" Content="I"/>
-                <Button Grid.Column="9" CommandParameter="O" Content="O"/>
-                <Button Grid.Column="10" CommandParameter="P" Content="P"/>
-                <Button Grid.Column="13" CommandParameter="BACK">
-                    <Path Stretch="Fill" Width="36" Height="24" Data="F1M555.0371,274.4893L552.7871,276.7383L549.9861,273.9373L547.1991,276.7243L545.1131,274.6393L547.9001,271.8523L545.0101,268.9603L547.2601,266.7113L550.1501,269.6023L552.8921,266.8613L554.9761,268.9463L552.2361,271.6883z M555.3751,264.0003L544.8751,264.0003C543.1251,264.1253,535.0001,270.7503,535.0001,272.2503C535.0001,273.7503,543.1251,279.3753,544.8751,279.5003L555.3751,279.5003C558.8751,279.5003,559.3751,277.7093,559.3751,275.5003L559.3751,268.0003C559.3751,265.7913,558.7501,264.0003,555.3751,264.0003" Fill="#FF333333"/>
-                </Button>
+                <Button Grid.Column="1" CommandParameter="Q" Content="Q" Grid.ColumnSpan="2" Margin="7,4,1,4"/>
+                <Button Grid.Column="3" CommandParameter="W" Content="W" Margin="7,4,1,4"/>
+                <Button Grid.Column="4" CommandParameter="E" Content="E" Margin="7,4,1,4"/>
+                <Button Grid.Column="5" CommandParameter="R" Content="R" Margin="7,4,1,4"/>
+                <Button Grid.Column="6" CommandParameter="T" Content="T" Margin="7,4,1,4"/>
+                <Button Grid.Column="7" CommandParameter="Y" Content="Y" Margin="7,4,1,4"/>
+                <Button Grid.Column="8" CommandParameter="U" Content="U" Margin="7,4,1,4"/>
+                <Button Grid.Column="9" CommandParameter="I" Content="I" Margin="7,4,1,4"/>
+                <Button Grid.Column="10" CommandParameter="O" Content="O" Margin="7,4,1,4"/>
+                <Button Grid.Column="11" CommandParameter="P" Content="P" Margin="7,4,1,4"/>
             </Grid>
             <Grid Grid.Row="4">
                 <Grid.ColumnDefinitions>
@@ -145,21 +140,15 @@
                     <ColumnDefinition Width="0"/>
                     <ColumnDefinition Width="1.55*"/>
                 </Grid.ColumnDefinitions>
-                <Button Grid.Column="1" CommandParameter="A" Content="A"/>
-                <Button Grid.Column="2" CommandParameter="S" Content="S"/>
-                <Button Grid.Column="3" CommandParameter="D" Content="D"/>
-                <Button Grid.Column="4" CommandParameter="F" Content="F"/>
-                <Button Grid.Column="5" CommandParameter="G" Content="G"/>
-                <Button Grid.Column="6" CommandParameter="H" Content="H"/>
-                <Button Grid.Column="7" CommandParameter="J" Content="J"/>
-                <Button Grid.Column="8" CommandParameter="K" Content="K"/>
-                <Button Grid.Column="9" CommandParameter="L" Content="L"/>
-                <Button Grid.Column="12" CommandParameter="RETURN" HorizontalContentAlignment="Right" Padding="10">
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="Return "/>
-                        <TextBlock Text="8 " FontFamily="Wingdings 3" TextAlignment="Center" />
-                    </StackPanel>
-                </Button>
+                <Button Grid.Column="1" CommandParameter="A" Content="A" Margin="6,2,2,6"/>
+                <Button Grid.Column="2" CommandParameter="S" Content="S" Margin="6,2,2,6"/>
+                <Button Grid.Column="3" CommandParameter="D" Content="D" Margin="6,2,2,6"/>
+                <Button Grid.Column="4" CommandParameter="F" Content="F" Margin="6,2,2,6"/>
+                <Button Grid.Column="5" CommandParameter="G" Content="G" Margin="6,2,2,6"/>
+                <Button Grid.Column="6" CommandParameter="H" Content="H" Margin="6,2,2,6"/>
+                <Button Grid.Column="7" CommandParameter="J" Content="J" Margin="6,2,2,6"/>
+                <Button Grid.Column="8" CommandParameter="K" Content="K" Margin="6,2,2,6"/>
+                <Button Grid.Column="9" CommandParameter="L" Content="L" Margin="6,2,2,6"/>
 
             </Grid>
             <Grid Grid.Row="5">
@@ -177,9 +166,6 @@
                     <ColumnDefinition Width="0"/>
                     <ColumnDefinition Width="1.1*"/>
                 </Grid.ColumnDefinitions>
-                <Button Grid.Column="0" CommandParameter="LSHIFT">
-                    <Path Fill="#FF333333" Stretch="Fill" Width="28" Height="24" Data="F1M269.5,262C269.026,262,268.552,262.168,268.171,262.505L259.671,270.505C259.05,271.057,258.835,271.935,259.131,272.71C259.425,273.487,260.169,274,261,274L265,274L265,278C265,279.104,265.896,280,267,280L272,280C273.104,280,274,279.104,274,278L274,274L278,274C278.81,274,279.538,273.513,279.849,272.766C280.157,272.018,279.986,271.158,279.415,270.585L270.914,262.586C270.524,262.197,270.013,262,269.5,262 M269.5,264L278,272L272,272L272,278L267,278L267,272L261,272L269.5,264"/>
-                </Button>
                 <Button Grid.Column="1" CommandParameter="Z" Content="Z"/>
                 <Button Grid.Column="2" CommandParameter="X" Content="X"/>
                 <Button Grid.Column="3" CommandParameter="C" Content="C"/>
@@ -187,10 +173,11 @@
                 <Button Grid.Column="5" CommandParameter="B" Content="B"/>
                 <Button Grid.Column="6" CommandParameter="N" Content="N"/>
                 <Button Grid.Column="7" CommandParameter="M" Content="M"/>
-                <Button Grid.Column="8" CommandParameter="." Content="."/>
-                <Button Grid.Column="9" CommandParameter="RSHIFT">
-                    <Path Fill="#FF333333" Stretch="Fill" Width="28" Height="24" Data="F1M269.5,262C269.026,262,268.552,262.168,268.171,262.505L259.671,270.505C259.05,271.057,258.835,271.935,259.131,272.71C259.425,273.487,260.169,274,261,274L265,274L265,278C265,279.104,265.896,280,267,280L272,280C273.104,280,274,279.104,274,278L274,274L278,274C278.81,274,279.538,273.513,279.849,272.766C280.157,272.018,279.986,271.158,279.415,270.585L270.914,262.586C270.524,262.197,270.013,262,269.5,262 M269.5,264L278,272L272,272L272,278L267,278L267,272L261,272L269.5,264"/>
+                <Button Grid.Column="8" CommandParameter="." Content="." Margin="1,76,7,-68"/>
+                <Button Grid.Column="9" CommandParameter="BACK" Margin="2,3,6,4" Grid.ColumnSpan="3">
+                    <Path Stretch="Fill" Width="36" Height="24" Data="F1M555.0371,274.4893L552.7871,276.7383L549.9861,273.9373L547.1991,276.7243L545.1131,274.6393L547.9001,271.8523L545.0101,268.9603L547.2601,266.7113L550.1501,269.6023L552.8921,266.8613L554.9761,268.9463L552.2361,271.6883z M555.3751,264.0003L544.8751,264.0003C543.1251,264.1253,535.0001,270.7503,535.0001,272.2503C535.0001,273.7503,543.1251,279.3753,544.8751,279.5003L555.3751,279.5003C558.8751,279.5003,559.3751,277.7093,559.3751,275.5003L559.3751,268.0003C559.3751,265.7913,558.7501,264.0003,555.3751,264.0003" Fill="#FF333333"/>
                 </Button>
+
             </Grid>
             <Grid Grid.Row="6">
                 <Grid.RowDefinitions>
@@ -201,7 +188,15 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition  Width="5*"/>
                 </Grid.ColumnDefinitions>
-                <Button CommandParameter="SPACE" Content=" " Grid.RowSpan="3" Grid.ColumnSpan="7" Margin="5,4,4,4"/>
+                <Button CommandParameter="SPACE" Content=" " Grid.RowSpan="3" Margin="117,4,224,4"/>
+                <Button CommandParameter="RETURN" HorizontalContentAlignment="Center" Padding="10" Margin="640,2,9,6" Grid.RowSpan="3">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Enter "/>
+                    </StackPanel>
+                </Button>
+                <Button Grid.Column="0" CommandParameter="LSHIFT" Margin="4,2,680,6" Grid.RowSpan="3">
+                    <Path Fill="#FF333333" Stretch="Fill" Width="28" Height="24" Data="F1M269.5,262C269.026,262,268.552,262.168,268.171,262.505L259.671,270.505C259.05,271.057,258.835,271.935,259.131,272.71C259.425,273.487,260.169,274,261,274L265,274L265,278C265,279.104,265.896,280,267,280L272,280C273.104,280,274,279.104,274,278L274,274L278,274C278.81,274,279.538,273.513,279.849,272.766C280.157,272.018,279.986,271.158,279.415,270.585L270.914,262.586C270.524,262.197,270.013,262,269.5,262 M269.5,264L278,272L272,272L272,278L267,278L267,272L261,272L269.5,264"/>
+                </Button>
             </Grid>
         </Grid>
         <Grid HorizontalAlignment="Stretch">
@@ -209,7 +204,7 @@
                 <ColumnDefinition Width="auto"/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="0" CommandParameter="ESC" Content="Esc" Height="50" Width="80" IsCancel="True"/>
+            <Button Grid.Column="0" CommandParameter="ESC" Content="Esc" Height="50" Width="0" IsCancel="True"/>
             <Label Content="{Binding Result, UpdateSourceTrigger=PropertyChanged}" Background="WhiteSmoke" BorderBrush="Gray" BorderThickness="1" Grid.Column="1" Margin="5,5,5,5" FontSize="18" HorizontalAlignment="Stretch"/>
         </Grid>
     </Grid>

@@ -21,8 +21,7 @@ namespace NetworkService
     /// </summary>
     public partial class VirtualKeyboard : Window, INotifyPropertyChanged
     {
-        #region Public Properties
-
+        
         private bool _showNumericKeyboard;
         private bool _showAlfaKeyboard;
 
@@ -41,12 +40,8 @@ namespace NetworkService
         public string Result
         {
             get { return _result; }
-            private set { _result = value; this.OnPropertyChanged("Result"); }
+            set { _result = value; this.OnPropertyChanged("Result"); }
         }
-
-        #endregion
-
-        #region Constructor
 
         public VirtualKeyboard(TextBox owner, Window wndOwner)
         {
@@ -56,10 +51,7 @@ namespace NetworkService
             Result = "";
         }
 
-        #endregion
-
-        #region Callbacks
-
+        
         private void button_Click(object sender, RoutedEventArgs e)
         {
             Button button = sender as Button;
@@ -94,37 +86,7 @@ namespace NetworkService
                             }
                         }
                         break;
-                    case "RSHIFT":
-                        Regex upperCaseRegex1 = new Regex("[A-Z]");
-                        Regex lowerCaseRegex1 = new Regex("[a-z]");
-                        Button btn1;
-
-                        foreach (UIElement elem in AlfaKeyboard.Children) //iterate the main grid
-                        {
-                            Grid grid = elem as Grid;
-                            if (grid != null)
-                            {
-                                foreach (UIElement uiElement in grid.Children)  //iterate the single rows
-                                {
-                                    btn1 = uiElement as Button;
-                                    if (btn1 != null) // if button contains only 1 character
-                                    {
-                                        if (btn1.Content.ToString().Length == 1)
-                                        {
-                                            if (upperCaseRegex1.Match(btn1.Content.ToString()).Success) // if the char is a letter and uppercase
-                                                btn1.Content = btn1.Content.ToString().ToLower();
-                                            else if (lowerCaseRegex1.Match(button.Content.ToString()).Success) // if the char is a letter and lower case
-                                                btn1.Content = btn1.Content.ToString().ToUpper();
-                                        }
-
-                                    }
-                                }
-                            }
-                        }
-                        break;
-
-
-
+                    
                     case "RETURN":
                         this.DialogResult = true;
                         break;
@@ -144,19 +106,12 @@ namespace NetworkService
             }
         }
 
-        #endregion
-
-        #region INotifyPropertyChanged members
-
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged(string propertyName)
         {
             if (PropertyChanged != null)
                 this.PropertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
         }
-
-        #endregion
-
 
     }
 }

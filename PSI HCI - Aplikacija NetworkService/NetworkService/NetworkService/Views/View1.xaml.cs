@@ -30,6 +30,7 @@ namespace NetworkService.Views
         {
             TextBox textbox = sender as TextBox;
             VirtualKeyboard keyboardWindow = new VirtualKeyboard(textbox, Window.GetWindow(this));
+            keyboardWindow.Result = textbox.Text;
             if (keyboardWindow.ShowDialog() == true)
                 textbox.Text = keyboardWindow.Result;
         }
@@ -37,6 +38,7 @@ namespace NetworkService.Views
         {
             TextBox textbox = sender as TextBox;
             VirtualKeyboard keyboardWindow = new VirtualKeyboard(textbox, Window.GetWindow(this));
+            keyboardWindow.Result = textbox.Text;
             if (keyboardWindow.ShowDialog() == true)
                 textbox.Text = keyboardWindow.Result;
         }
@@ -45,10 +47,9 @@ namespace NetworkService.Views
         {
             TextBox textbox = sender as TextBox;
             VirtualKeyboard keyboardWindow = new VirtualKeyboard(textbox, Window.GetWindow(this));
+            keyboardWindow.Result = textbox.Text;
             if (keyboardWindow.ShowDialog() == true)
                 textbox.Text = keyboardWindow.Result;
         }
-
-
     }
 }

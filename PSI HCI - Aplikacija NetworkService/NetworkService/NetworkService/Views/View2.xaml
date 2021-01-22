@@ -47,7 +47,7 @@
                 </i:Interaction.Triggers>
                 <Border Width="140" Height="95" BorderThickness="3"/>
                 <TextBlock  Width=" 140" Height="40" FontSize="35" TextAlignment="Center" Canvas.Top="20" Foreground="Red" Background="Transparent"/>
-                <Button TabIndex="0" Width="140" Height="20" Content="Remove" Canvas.Top="75" Command="{Binding FreeCommand}"  CommandParameter="{Binding ElementName=Cnv0}"/>
+                <Button TabIndex="0" Width="140" Height="20" Content="Izbaci" Canvas.Top="75" Command="{Binding FreeCommand}"  CommandParameter="{Binding ElementName=Cnv0}"/>
             </Canvas>
             <Canvas x:Name="Cnv1"  Width="140" Height="75" VerticalAlignment="Top" HorizontalAlignment="Center" AllowDrop="True" Grid.Column="0" Grid.Row="1" Background="White">
                 <i:Interaction.Triggers>
@@ -65,8 +65,10 @@
                     </i:EventTrigger>
                 </i:Interaction.Triggers>
                 <Border Width="140" Height="95" BorderThickness="3"/>
-                <TextBlock  Width=" 140" Height="40" FontSize="35" TextAlignment="Center" Canvas.Top="20" Foreground="Red" />
-                <Button TabIndex="1" Width="140" Height="20" Content="Remove" Canvas.Top="75" Command="{Binding FreeCommand}" CommandParameter="{Binding ElementName=Cnv1}"/>
+                <TextBlock  Width=" 140" Height="40" FontSize="35" TextAlignment="Center" Canvas.Top="20" Foreground="Red" ><InlineUIContainer>
+                        
+                    </InlineUIContainer></TextBlock>
+                <Button TabIndex="1" Width="140" Height="20" Content="Izbaci" Canvas.Top="75" Command="{Binding FreeCommand}" CommandParameter="{Binding ElementName=Cnv1}"/>
             </Canvas>
             <Canvas x:Name="Cnv2"  Width="140" Height="75" VerticalAlignment="Top" HorizontalAlignment="Center" AllowDrop="True" Grid.Column="0" Grid.Row="2" Background="White">
                 <i:Interaction.Triggers>
@@ -85,7 +87,7 @@
                 </i:Interaction.Triggers>
                 <Border Width="140" Height="95" BorderThickness="3"/>
                 <TextBlock  Width=" 140" Height="40" FontSize="35" TextAlignment="Center" Canvas.Top="20" Foreground="Red" Background="Transparent"/>
-                <Button TabIndex="2" Width="140" Height="20" Content="Remove" Canvas.Top="75" Command="{Binding FreeCommand}"  CommandParameter="{Binding ElementName=Cnv2}"/>
+                <Button TabIndex="2" Width="140" Height="20" Content="Izbaci" Canvas.Top="75" Command="{Binding FreeCommand}"  CommandParameter="{Binding ElementName=Cnv2}"/>
             </Canvas>
             <Canvas x:Name="Cnv3"  Width="140" Height="75" VerticalAlignment="Top" HorizontalAlignment="Center" AllowDrop="True" Grid.Column="0" Grid.Row="3" Background="White">
                 <i:Interaction.Triggers>
@@ -104,7 +106,7 @@
                 </i:Interaction.Triggers>
                 <Border Width="140" Height="95" BorderThickness="3"/>
                 <TextBlock  Width=" 140" Height="40" FontSize="35" TextAlignment="Center" Canvas.Top="20" Foreground="Red" Background="Transparent"/>
-                <Button TabIndex="3" Width="140" Height="20" Content="Remove" Canvas.Top="75" Command="{Binding FreeCommand}"  CommandParameter="{Binding ElementName=Cnv3}"/>
+                <Button TabIndex="3" Width="140" Height="20" Content="Izbaci" Canvas.Top="75" Command="{Binding FreeCommand}"  CommandParameter="{Binding ElementName=Cnv3}"/>
             </Canvas>
             <Canvas x:Name="Cnv4"  Width="140" Height="75" VerticalAlignment="Top" HorizontalAlignment="Center" AllowDrop="True" Grid.Column="1" Grid.Row="4" Background="White">
                 <i:Interaction.Triggers>
@@ -123,7 +125,7 @@
                 </i:Interaction.Triggers>
                 <Border Width="140" Height="95" BorderThickness="3"/>
                 <TextBlock  Width=" 140" Height="40" FontSize="35" TextAlignment="Center" Canvas.Top="20" Foreground="Red" Background="Transparent"/>
-                <Button TabIndex="4" Width="140" Height="20" Content="Remove" Canvas.Top="75" Command="{Binding FreeCommand}"  CommandParameter="{Binding ElementName=Cnv4}"/>
+                <Button TabIndex="4" Width="140" Height="20" Content="Izbaci" Canvas.Top="75" Command="{Binding FreeCommand}"  CommandParameter="{Binding ElementName=Cnv4}"/>
             </Canvas>
             <Canvas x:Name="Cnv5"  Width="140" Height="75" VerticalAlignment="Top" HorizontalAlignment="Center" AllowDrop="True" Grid.Column="1" Grid.Row="1" Background="White">
                 <i:Interaction.Triggers>
@@ -142,7 +144,7 @@
                 </i:Interaction.Triggers>
                 <Border Width="140" Height="95" BorderThickness="3"/>
                 <TextBlock  Width=" 140" Height="40" FontSize="35" TextAlignment="Center" Canvas.Top="20" Foreground="Red" Background="Transparent"/>
-                <Button TabIndex="5" Width="140" Height="20" Content="Remove" Canvas.Top="75" Command="{Binding FreeCommand}"  CommandParameter="{Binding ElementName=Cnv5}"/>
+                <Button TabIndex="5" Width="140" Height="20" Content="Izbaci" Canvas.Top="75" Command="{Binding FreeCommand}"  CommandParameter="{Binding ElementName=Cnv5}"/>
             </Canvas>
             <Canvas x:Name="Cnv6"  Width="140" Height="75" VerticalAlignment="Top" HorizontalAlignment="Center" AllowDrop="True" Grid.Column="1" Grid.Row="2" Background="White">
                 <i:Interaction.Triggers>
@@ -161,7 +163,7 @@
                 </i:Interaction.Triggers>
                 <Border Width="140" Height="95" BorderThickness="3"/>
                 <TextBlock  Width=" 140" Height="40" FontSize="35" TextAlignment="Center" Canvas.Top="20" Foreground="Red" Background="Transparent"/>
-                <Button TabIndex="6" Width="140" Height="20" Content="Remove" Canvas.Top="75" Command="{Binding FreeCommand}"  CommandParameter="{Binding ElementName=Cnv6}"/>
+                <Button TabIndex="6" Width="140" Height="20" Content="Izbaci" Canvas.Top="75" Command="{Binding FreeCommand}"  CommandParameter="{Binding ElementName=Cnv6}"/>
             </Canvas>
             <Canvas x:Name="Cnv7"  Width="140" Height="75" VerticalAlignment="Top" HorizontalAlignment="Center" AllowDrop="True" Grid.Column="1" Grid.Row="3" Background="White">
                 <i:Interaction.Triggers>
@@ -180,7 +182,7 @@
                 </i:Interaction.Triggers>
                 <Border Width="140" Height="95" BorderThickness="3"/>
                 <TextBlock  Width=" 140" Height="40" FontSize="35" TextAlignment="Center" Canvas.Top="20" Foreground="Red" Background="Transparent"/>
-                <Button TabIndex="7" Width="140" Height="20" Content="Remove" Canvas.Top="75" Command="{Binding FreeCommand}"  CommandParameter="{Binding ElementName=Cnv7}"/>
+                <Button TabIndex="7" Width="140" Height="20" Content="Izbaci" Canvas.Top="75" Command="{Binding FreeCommand}"  CommandParameter="{Binding ElementName=Cnv7}"/>
             </Canvas>
             <Canvas x:Name="Cnv8"  Width="140" Height="75" VerticalAlignment="Top" HorizontalAlignment="Center" AllowDrop="True" Grid.Column="2" Grid.Row="4" Background="White">
                 <i:Interaction.Triggers>
@@ -199,7 +201,7 @@
                 </i:Interaction.Triggers>
                 <Border Width="140" Height="95" BorderThickness="3"/>
                 <TextBlock  Width=" 140" Height="40" FontSize="35" TextAlignment="Center" Canvas.Top="20" Foreground="Red" Background="Transparent"/>
-                <Button TabIndex="8" Width="140" Height="20" Content="Remove" Canvas.Top="75" Command="{Binding FreeCommand}"  CommandParameter="{Binding ElementName=Cnv8}"/>
+                <Button TabIndex="8" Width="140" Height="20" Content="Izbaci" Canvas.Top="75" Command="{Binding FreeCommand}"  CommandParameter="{Binding ElementName=Cnv8}"/>
             </Canvas>
             <Canvas x:Name="Cnv9"  Width="140" Height="75" VerticalAlignment="Top" HorizontalAlignment="Center" AllowDrop="True" Grid.Column="2" Grid.Row="1" Background="White">
                 <i:Interaction.Triggers>
@@ -218,7 +220,7 @@
                 </i:Interaction.Triggers>
                 <Border Width="140" Height="95" BorderThickness="3"/>
                 <TextBlock  Width=" 140" Height="40" FontSize="35" TextAlignment="Center" Canvas.Top="20" Foreground="Red" Background="Transparent"/>
-                <Button TabIndex="9" Width="140" Height="20" Content="Remove" Canvas.Top="75" Command="{Binding FreeCommand}"  CommandParameter="{Binding ElementName=Cnv9}"/>
+                <Button TabIndex="9" Width="140" Height="20" Content="Izbaci" Canvas.Top="75" Command="{Binding FreeCommand}"  CommandParameter="{Binding ElementName=Cnv9}"/>
             </Canvas>
             <Canvas x:Name="Cnv10"  Width="140" Height="75" VerticalAlignment="Top" HorizontalAlignment="Center" AllowDrop="True" Grid.Column="2" Grid.Row="2" Background="White">
                 <i:Interaction.Triggers>
@@ -237,7 +239,7 @@
                 </i:Interaction.Triggers>
                 <Border Width="140" Height="95" BorderThickness="3"/>
                 <TextBlock  Width=" 140" Height="40" FontSize="35" TextAlignment="Center" Canvas.Top="20" Foreground="Red" Background="Transparent"/>
-                <Button TabIndex="10" Width="140" Height="20" Content="Remove" Canvas.Top="75" Command="{Binding FreeCommand}"  CommandParameter="{Binding ElementName=Cnv10}"/>
+                <Button TabIndex="10" Width="140" Height="20" Content="Izbaci" Canvas.Top="75" Command="{Binding FreeCommand}"  CommandParameter="{Binding ElementName=Cnv10}"/>
             </Canvas>
             <Canvas x:Name="Cnv11"  Width="140" Height="75" VerticalAlignment="Top" HorizontalAlignment="Center" AllowDrop="True" Grid.Column="2" Grid.Row="3" Background="White">
                 <i:Interaction.Triggers>
@@ -256,7 +258,7 @@
                 </i:Interaction.Triggers>
                 <Border Width="140" Height="95" BorderThickness="3"/>
                 <TextBlock  Width=" 140" Height="40" FontSize="35" TextAlignment="Center" Canvas.Top="20" Foreground="Red" Background="Transparent"/>
-                <Button TabIndex="11" Width="140" Height="20" Content="Remove" Canvas.Top="75" Command="{Binding FreeCommand}"  CommandParameter="{Binding ElementName=Cnv11}"/>
+                <Button TabIndex="11" Width="140" Height="20" Content="Izbaci" Canvas.Top="75" Command="{Binding FreeCommand}"  CommandParameter="{Binding ElementName=Cnv11}"/>
             </Canvas>
         </Grid>
         <ListView x:Name="MainList" Width="160" HorizontalAlignment="Right" Margin="0,109,10,113" ItemsSource="{Binding Items, Mode=TwoWay}" SelectedIndex="{Binding SelectedIndex, Mode=TwoWay}" ScrollViewer.CanContentScroll="True">

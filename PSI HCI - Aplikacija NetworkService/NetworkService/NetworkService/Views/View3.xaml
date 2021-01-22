@@ -26,8 +26,8 @@
                 <Line X1="0" X2="550" Y1="0" Y2="0" StrokeThickness="3" Stroke="Black" Canvas.Bottom="78" Canvas.Left="40" Canvas.Top="220"  />
                 <Line X1="0" X2="0" Y1="0" Y2="200" StrokeThickness="3" Stroke="Black" Canvas.Bottom="78" Canvas.Left="40"   />
                 <ComboBox x:Name="comboBox" ItemsSource="{Binding All_ids, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}" SelectedItem="{Binding Selected_id, UpdateSourceTrigger=PropertyChanged}" Canvas.Left="40" Canvas.Top="259" Width="82" Height="31"/>
-                <Button x:Name="button" Content="Prikazi za ID" Command="{Binding SearchCommand}" Canvas.Left="130" Canvas.Top="259" Width="75" Height="29"/>
-                <Button x:Name="button_Copy" Content="Ponisti" Command="{Binding CancelCommand}" Canvas.Left="230" Canvas.Top="259" Width="75" Height="29"/>
+                <Button x:Name="button" Content="Prika&#382;i za ID" Command="{Binding SearchCommand}" Canvas.Left="130" Canvas.Top="259" Width="75" Height="29"/>
+                <Button x:Name="button_Copy" Content="Poni&#353;ti" Command="{Binding CancelCommand}" Canvas.Left="230" Canvas.Top="259" Width="75" Height="29"/>
                 <Label x:Name="label" Content=" t-4" Canvas.Left="56" Canvas.Top="227" Height="27"/>
                 <Label x:Name="label_Copy" Content=" t-3" Canvas.Left="154" Canvas.Top="227" Height="27"/>
                 <Label x:Name="label_Copy1" Content=" t-2" Canvas.Left="252" Canvas.Top="225" Height="27"/>

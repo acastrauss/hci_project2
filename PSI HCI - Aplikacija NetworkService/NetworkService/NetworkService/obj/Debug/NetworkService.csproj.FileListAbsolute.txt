@@ -35,3 +35,4 @@ C:\Users\acast\Desktop\treca_godina_prvi_semestar\hci\vezbe\projekat_dva\PSI HCI
 C:\Users\acast\Desktop\treca_godina_prvi_semestar\hci\vezbe\projekat_dva\PSI HCI - Aplikacija NetworkService\NetworkService\NetworkService\obj\Debug\NetworkService.csproj.CopyComplete
 C:\Users\acast\Desktop\treca_godina_prvi_semestar\hci\vezbe\projekat_dva\PSI HCI - Aplikacija NetworkService\NetworkService\NetworkService\obj\Debug\NetworkService.exe
 C:\Users\acast\Desktop\treca_godina_prvi_semestar\hci\vezbe\projekat_dva\PSI HCI - Aplikacija NetworkService\NetworkService\NetworkService\obj\Debug\NetworkService.pdb
+C:\Users\acast\Desktop\treca_godina_prvi_semestar\hci\vezbe\projekat_dva\PSI HCI - Aplikacija NetworkService\NetworkService\NetworkService\obj\Debug\NetworkService.csprojAssemblyReference.cache

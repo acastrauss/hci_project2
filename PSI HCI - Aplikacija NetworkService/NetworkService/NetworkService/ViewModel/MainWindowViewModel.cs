@@ -34,11 +34,13 @@ namespace NetworkService.ViewModel
 
         public MainWindowViewModel()
         {
-            //createListener();
+            createListener();
             NavCommand = new MyICommand<String>(OnNav);
             UndoCommand = new MyICommand(OnUndo);
             CurrentViewModel = podaci;
             Previous = CurrentViewModel;
+
+            System.IO.File.WriteAllText(fname, string.Empty);
         }
         public BindableBase CurrentViewModel
         {
@@ -135,13 +137,16 @@ namespace NetworkService.ViewModel
 
                             string send_msg = string.Format("{0}_{1}:{2}", ime_real, id, v);
 
-                            using (StreamWriter sw = File.AppendText(fname))
+                            if (v >= 0 && v < 90)
                             {
-                                sw.WriteLine(send_msg);
-                            }
+                                using (StreamWriter sw = File.AppendText(fname))
+                                {
+                                    sw.WriteLine(send_msg);
+                                }
 
-                            podaci.change_value_by_id(id, v);
-                            OnPropertyChanged("Parkizni");
+                                podaci.change_value_by_id(id, v);
+                                OnPropertyChanged("Parkizni");
+                            }
                         }
                         
                     }, null);

@@ -43,7 +43,7 @@
                 <Separator  Width="23"/>
                 <Button Content="Iskljuci pretragu" Height="40" FontSize="20" Width="143" Margin="0,8,0,7" Command="{Binding CancelCommand}"/>
             </StackPanel>
-            <Separator Height="20"/>
+            <Separator Height="20" Foreground="Transparent"/>
             <DataGrid AutoGenerateColumns="False"  ItemsSource="{Binding Parkinzi, UpdateSourceTrigger=PropertyChanged}"  SelectedItem="{Binding TrenutniParking}" CanUserAddRows="False" Height="200" Margin="40,0">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Id" Binding="{Binding Id}" Width="*" IsReadOnly="True" />
@@ -66,7 +66,9 @@
                     <TextBlock Text="Ime" FontSize="20" Width="87" Height="25" TextAlignment="Center"  />
                 </StackPanel>
                 <StackPanel Orientation="Vertical">
-                    <TextBox Text="{Binding Izabrani_id, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="166" Height="25" ToolTip="ID must be unique"/>
+                    <TextBox Text="{Binding Izabrani_id, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="166" Height="25" ToolTip="ID must be unique" >
+                        
+                    </TextBox>
                     <TextBox Text="{Binding Izabrano_ime, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="167" Height="25"/>
                 </StackPanel>
             </StackPanel>

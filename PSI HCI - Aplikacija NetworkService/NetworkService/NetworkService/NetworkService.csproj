@@ -83,7 +83,6 @@
     <Compile Include="ViewModel\View2Model.cs" />
     <Compile Include="ViewModel\View1Model.cs" />
     <Compile Include="ViewModel\View3Model.cs" />
-    <Compile Include="ViewModel\View4Model.cs" />
     <Compile Include="Views\View1.xaml.cs">
       <DependentUpon>View1.xaml</DependentUpon>
     </Compile>

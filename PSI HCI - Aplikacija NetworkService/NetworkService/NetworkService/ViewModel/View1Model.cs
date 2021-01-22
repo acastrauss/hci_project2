@@ -75,9 +75,20 @@ namespace NetworkService.ViewModel
         public int Tip_ime 
         { 
             get { return tip_ime; }
-          set => tip_ime = value; 
+            set
+            {
+                tip_ime = value;
+                SearchCommand.RaiseCanExecuteChanged();
+            } 
         }
-        public string Str_search { get => str_search; set => str_search = value; }
+        public string Str_search { get => str_search; 
+            set
+            {
+                str_search = value;
+                OnPropertyChanged("Str_search");
+                SearchCommand.RaiseCanExecuteChanged();
+            } 
+        }
         public string Izabrani_tip 
         {
             get { return izabrani_tip; }
@@ -128,17 +139,6 @@ namespace NetworkService.ViewModel
             }
         }
 
-        /*
-        public ObservableCollection<Parking> Parkinzi
-        {
-            get { return parkinzi; }
-            set
-            {
-                parkinzi = value;
-                OnPropertyChanged("Parkinzi");
-            }
-        }
-        */
         public string Path_to_pic 
         {
             get { return path_to_pic; } 
@@ -156,11 +156,13 @@ namespace NetworkService.ViewModel
         private void OnAdd()
         {
             Parking novi = new Parking(Izabrani_id, Izabrano_ime, new TipParkinga(Izabrani_tip, Path_to_pic));
+            
 
             novi.Validate();
             if (novi.IsValid)
             {
                 Parkinzi.Add(novi);
+                View3Model.set_all_ids(Parkinzi);
             }
             else
             {
@@ -191,9 +193,6 @@ namespace NetworkService.ViewModel
 
             sacuvaj_parkinge();
 
-            //MessageBox.Show(tip_ime.ToString());
-            //MessageBox.Show(str_search);
-            
             if (tip_ime == 1)
             {
                 foreach (Parking parking in Parkinzi)
@@ -208,7 +207,6 @@ namespace NetworkService.ViewModel
             {
                 foreach (Parking parking in Parkinzi)
                 {
-                    //MessageBox.Show(parking.ToString());
                     if (str_search == parking.Naziv)
                     {
                         TrazeniParkinzi.Add(parking);
@@ -216,9 +214,6 @@ namespace NetworkService.ViewModel
                 }
             }
             zameni_parkinge();
-
-            tip_ime = -1;
-            str_search = string.Empty;
             trazi_cancel = true;
             OnPropertyChanged("Parkinzi");
             CancelCommand.RaiseCanExecuteChanged();
@@ -226,17 +221,31 @@ namespace NetworkService.ViewModel
 
         private void sacuvaj_parkinge()
         {
-            ParkinziRezerva = new ObservableCollection<Parking>(Parkinzi);
+            ParkinziRezerva.Clear();
+            foreach (Parking parking in Parkinzi)
+            {
+                ParkinziRezerva.Add(parking);
+            }
         }
 
         private void vrati_parkinge()
         {
-            Parkinzi = new ObservableCollection<Parking>(ParkinziRezerva);
+            Parkinzi.Clear();
+            foreach (Parking parking in ParkinziRezerva)
+            {
+                Parkinzi.Add(parking);
+            }
+            OnPropertyChanged("Parkinzi");
         }
 
         private void zameni_parkinge()
         {
-            Parkinzi = new ObservableCollection<Parking>(TrazeniParkinzi);
+            Parkinzi.Clear();
+            foreach (Parking parking in TrazeniParkinzi)
+            {
+                Parkinzi.Add(parking);
+            }
+            OnPropertyChanged("Parkinzi");
         }
 
         private void OnTip()
@@ -259,10 +268,11 @@ namespace NetworkService.ViewModel
         {
             TrazeniParkinzi.Clear();
             vrati_parkinge();
-            OnPropertyChanged("TrazeniServeri");
+            OnPropertyChanged("TrazeniParkinzi");
             OnPropertyChanged("Parkinzi");
             trazi_cancel = false;
             CancelCommand.RaiseCanExecuteChanged();
+            SearchCommand.RaiseCanExecuteChanged();
             AddCommand.RaiseCanExecuteChanged();
         }
 

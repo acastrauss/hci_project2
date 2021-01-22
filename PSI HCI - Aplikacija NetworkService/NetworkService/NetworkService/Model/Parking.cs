@@ -18,7 +18,7 @@ namespace NetworkService.Model
             id = -1;
             naziv = string.Empty;
             tipParkinga = new TipParkinga();
-            val = 0.5;
+            val = 50;
         }
 
         public Parking(int id, string naziv, TipParkinga tipParkinga)
@@ -26,7 +26,7 @@ namespace NetworkService.Model
             this.id = id;
             this.naziv = naziv;
             this.tipParkinga = tipParkinga;
-            val = 0.5; // default vrednost
+            val = 50; // default vrednost
         }
 
         public Parking(Parking pc)
@@ -103,7 +103,7 @@ namespace NetworkService.Model
             {
                 this.ValidationErrors["TipParkinga"] = "Nevalidan tip parkinga!";
             }
-            if(val <= 0 || val >= 0.9)
+            if(val <= 0 || val >= 90)
             {
                 this.ValidationErrors["Val"] = "Vrednost mora pozitivan broj do 90 procenata (0.9)!";
             }

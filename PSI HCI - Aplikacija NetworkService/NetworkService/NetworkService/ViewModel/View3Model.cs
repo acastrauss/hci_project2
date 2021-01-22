@@ -7,15 +7,148 @@ using System.ComponentModel;
 using System.IO;
 using NetworkService.Model;
 using GalaSoft.MvvmLight.Messaging;
+using System.Collections.ObjectModel;
 
 namespace NetworkService.ViewModel
 {
     public class View3Model : BindableBase, IDataErrorInfo
     {
+        private const string fname = "logs.txt"; 
+
+        public MyICommand SearchCommand { get; set; }
+        public MyICommand CancelCommand { get; set; }
+
+        private bool CanSearch()
+        {
+            return selected_id != 0;
+        }
+
+        private bool CanCancel()
+        {
+            return Y1 != 0 || Y2 != 0 || Y3 != 0 || Y4 != 0 || Y5 != 0; 
+        }
+        private void OnCancel()
+        {
+            Y1 = 0;
+            Y2 = 0;
+            Y3 = 0;
+            Y4 = 0;
+            Y5 = 0;
+            selected_id = 0;
+            SearchCommand.RaiseCanExecuteChanged();
+        }
+
+        private void OnSearch()
+        {
+
+            if (!load_data()) return;
+            for (int i = vals.Count - 1; i >= 0; i--)
+            {
+                if (i == 4)
+                {
+                    Y1 = (int)(vals[i] / 90.0 * (220 - 67)); // skalirano
+                }
+                else if (i == 3)
+                {
+                    Y2 = (int)(vals[i] / 90.0 * (220 - 67));
+                }
+                else if (i == 2)
+                {
+                    Y3 = (int)(vals[i] / 90.0 * (220 - 67));
+                }
+                else if(i == 1)
+                {
+                    Y4 = (int)(vals[i] / 90.0 * (220 - 67));
+                }
+                else if(i == 0)
+                {
+                    Y5 = (int)(vals[0] / 90.0 * (220 - 67));
+                }
+            }
+        }
+
+        private bool load_data()
+        {
+            vals.Clear();
+
+            int indx = 0;
+            for (int i = 0; i < all_parkings.Count; i++)
+            {
+                if (all_parkings[i].Id == selected_id)
+                {
+                    indx = i;
+                    break;
+                }
+            }
+
+            string[] lines = System.IO.File.ReadAllLines(fname);
+
+            int found = 0;
+            
+            for (int i = lines.Length - 1; i >= 0; i--)
+            {
+                string temp = lines[i].Split('_')[1];
+                string[] arr_s = temp.Split(':');
+                int id_f = int.Parse(arr_s[0]);
+                int val_f = int.Parse(arr_s[1]);
+
+                if (id_f == indx)
+                {
+                    vals.Add(val_f);
+                    if (++found == 5) break;
+                }
+            }
+
+            return found != 0;
+        }
+
         public string this[string columnName] => throw new NotImplementedException();
 
         public string Error => throw new NotImplementedException();
+        
+        private List<int> vals = new List<int>();
 
+        private static List<int> all_ids = new List<int>();
+        private int selected_id = 0;
+
+        private static List<Parking> all_parkings = new List<Parking>();
+
+
+        public List<int> All_ids 
+        { 
+            get => all_ids; 
+            set 
+            {
+                if(all_ids != value)
+                {
+                    all_ids = value;
+                    OnPropertyChanged("All_ids");
+                }
+            }
+        }
+        public int Selected_id 
+        { 
+            get => selected_id;
+            set
+            {
+                if(selected_id != value)
+                {
+                    selected_id = value;
+                    OnPropertyChanged("Selected_id");
+                    SearchCommand.RaiseCanExecuteChanged();
+                }
+            }
+        }
+
+        public static void set_all_ids(ObservableCollection<Parking> parkings)
+        {
+            all_parkings = new List<Parking>(parkings.ToList());
+            all_ids.Clear();
+            foreach (Parking parking in all_parkings)
+            {
+                all_ids.Add(parking.Id);
+            }
+        }
 
         private int y1;
         private int y2;
@@ -50,6 +183,7 @@ namespace NetworkService.ViewModel
                 {
                     y1 = value;
                     OnPropertyChanged("Y1");
+                    CancelCommand.RaiseCanExecuteChanged();
                 }
             }
         }
@@ -62,6 +196,7 @@ namespace NetworkService.ViewModel
                 {
                     y2 = value;
                     OnPropertyChanged("Y2");
+                    CancelCommand.RaiseCanExecuteChanged();
                 }
             }
         }
@@ -74,6 +209,7 @@ namespace NetworkService.ViewModel
                 {
                     y3 = value;
                     OnPropertyChanged("Y3");
+                    CancelCommand.RaiseCanExecuteChanged();
                 }
             }
         }
@@ -86,6 +222,7 @@ namespace NetworkService.ViewModel
                 {
                     y4 = value;
                     OnPropertyChanged("Y4");
+                    CancelCommand.RaiseCanExecuteChanged();
                 }
             }
         }
@@ -97,7 +234,8 @@ namespace NetworkService.ViewModel
                 if (y5 != value)
                 {
                     y5 = value;
-                    OnPropertyChanged("Y4");
+                    OnPropertyChanged("Y5");
+                    CancelCommand.RaiseCanExecuteChanged();
                 }
             }
         }
@@ -302,154 +440,21 @@ namespace NetworkService.ViewModel
 
         public View3Model()
         {
-            Y1 = 150;
-            Y2 = 150;
-            Y3 = 150;
-            Y4 = 150;
-            Y5 = 150;
-            Messenger.Default.Register<Dictionary<string, Parking>>(this, Crtaj);
+            Y1 = 0;
+            Y2 = 0;
+            Y3 = 0;
+            Y4 = 0;
+            Y5 = 0;
+            Color1 = "#ff0000";
+            Color2 = "#ff0000";
+            Color3 = "#ff0000";
+            Color4 = "#ff0000";
+            Color5 = "#ff0000";
+            
+            SearchCommand = new MyICommand(OnSearch, CanSearch);
+            CancelCommand = new MyICommand(OnCancel, CanCancel);
         }
 
-        public void Crtaj(Dictionary<string, Parking> auti)
-        {
-            int i = 0;
-            foreach (KeyValuePair<string, Parking> entry in auti)
-            {
-                if (i == 0)
-                {
-                    //entry.Value.Value = 15000.0;
-                    Y5 = (int)entry.Value.Val / 100;
-                    Time5 = entry.Key;
-                    Type5 = entry.Value.TipParkinga.Ime;
-
-                }
-                else if (i == 1)
-                {
-                    // entry.Value.Value = 7000.0;
-                    Y4 = (int)entry.Value.Val / 100;
-                    Time4 = entry.Key;
-                    Type4 = entry.Value.TipParkinga.Ime;
-                }
-                else if (i == 2)
-                {
-                    // entry.Value.Value = 15000.0;
-                    Y3 = (int)entry.Value.Val / 100;
-                    Time3 = entry.Key;
-                    Type3 = entry.Value.TipParkinga.Ime;
-                }
-                else if (i == 3)
-                {
-                    // entry.Value.Value = 7000.0;
-                    Y2 = (int)entry.Value.Val / 100;
-                    Time2 = entry.Key;
-                    Type2 = entry.Value.TipParkinga.Ime;
-                }
-                else if (i == 4)
-                {
-                    //entry.Value.Value = 15000.0;
-                    Y1 = (int)entry.Value.Val / 100;
-                    Time1 = entry.Key;
-                    Type1 = entry.Value.TipParkinga.Ime;
-                }
-                i++;
-            }
-
-            i = 0;
-            foreach (KeyValuePair<string, Parking> entry in auti)
-            {
-                if (entry.Value.TipParkinga.Ime == "IA")
-                {
-                    if (entry.Value.Val > 15000.0)
-                    {
-                        switch (i)
-                        {
-                            case 0:
-                                Color5 = "#ff0000";
-                                break;
-                            case 1:
-                                Color4 = "#ff0000";
-                                break;
-                            case 2:
-                                Color3 = "#ff0000";
-                                break;
-                            case 3:
-                                Color2 = "#ff0000";
-                                break;
-                            case 4:
-                                Color1 = "#ff0000";
-                                break;
-                        }
-                    }
-                    else
-                    {
-                        switch (i)
-                        {
-                            case 0:
-                                Color5 = "#000000";
-                                break;
-                            case 1:
-                                Color4 = "#000000";
-                                break;
-                            case 2:
-                                Color3 = "#000000";
-                                break;
-                            case 3:
-                                Color2 = "#000000";
-                                break;
-                            case 4:
-                                Color1 = "#000000";
-                                break;
-                        }
-                    }
-                }
-                else if (entry.Value.TipParkinga.Ime == "IB")
-                {
-                    if (entry.Value.Val > 7000.0)
-                    {
-                        switch (i)
-                        {
-                            case 0:
-                                Color5 = "#ff0000";
-                                break;
-                            case 1:
-                                Color4 = "#ff0000";
-                                break;
-                            case 2:
-                                Color3 = "#ff0000";
-                                break;
-                            case 3:
-                                Color2 = "#ff0000";
-                                break;
-                            case 4:
-                                Color1 = "#ff0000";
-                                break;
-                        }
-                    }
-                    else
-                    {
-                        switch (i)
-                        {
-                            case 0:
-                                Color5 = "#000000";
-                                break;
-                            case 1:
-                                Color4 = "#000000";
-                                break;
-                            case 2:
-                                Color3 = "#000000";
-                                break;
-                            case 3:
-                                Color2 = "#000000";
-                                break;
-                            case 4:
-                                Color1 = "#000000";
-                                break;
-                        }
-                    }
-                }
-                i++;
-            }
-        }
 
     }
 }
